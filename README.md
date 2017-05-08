@@ -33,11 +33,11 @@ systemctl enable hosting-docker.service
 ```
 
 ## Structure
-`backups/db` mysql dumps location
-`content/db` mysql db files location
-`content/site-configs` nginx configs for websites
-`content/site-files` websites files
+* `backups/db` mysql dumps location
+* `content/db` mysql db files location
+* `content/site-configs` nginx configs for websites
+* `content/site-files` websites files
 
 ## DB Maintenance
-`db_backup.sh` - make dumps of all mysql dbs
-`db_cli.sh` - enter mysql console
+* `db_backup.sh` - make dumps of all mysql dbs
+* `db_cli.sh` - enter mysql console
