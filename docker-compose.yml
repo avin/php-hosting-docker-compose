@@ -1,0 +1,46 @@
+version: '2'
+services:
+  webserver:
+    build:
+      context: ./containers/nginx      
+      dockerfile: "Dockerfile"
+    ports:
+      - 40080:80 
+      - 40443:443 
+    volumes:
+      - ./content/site-files:/var/www/vhosts
+      - ./content/site-configs:/etc/nginx/sites/    
+    depends_on:
+      - db
+      - php
+    networks:
+      - webserver-network
+  db:
+    build:
+      context: ./containers/mysql      
+      dockerfile: "Dockerfile"     
+    ports:
+      - 127.0.0.1:43306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./backups/db:/backup
+      - ./content/db:/data/mysql
+    networks:
+      - webserver-network
+  php:
+    build:
+      context: ./containers/php      
+      dockerfile: "Dockerfile"
+      
+    # !!! seems like fpm receives the full path from nginx
+    # !!! and tries to find the files in this dock, so it must
+    # !!! be the same as nginx.root
+    volumes:
+      - ./content/site-files:/var/www/vhosts     
+    networks:
+      - webserver-network
+    
+networks:
+  webserver-network:
+      driver: bridge
