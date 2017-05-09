@@ -10,7 +10,7 @@ ADD my.cnf /etc/mysql/
 RUN chmod 0644 /etc/mysql/my.cnf
 ADD init.sh /tmp/init.sh
 ADD backup.sh /tmp/backup.sh
-RUN chmod +x /tmp/backup.sh
+RUN chmod +x /tmp/backup.sh /tmp/init.sh
 
 EXPOSE 3306
 VOLUME ["/backup", "/data/mysql"]
