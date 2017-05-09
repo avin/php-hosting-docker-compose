@@ -20,7 +20,7 @@ After=docker.service
 Requires=docker.service
 
 [Service]
-ExecStart=/usr/local/bin/docker-compose -f /opt/hosting/docker-compose.yml up
+ExecStart=/usr/local/bin/docker-compose -f /opt/hosting/docker-compose.yml up --build
 ExecStop=/usr/local/bin/docker-compose -f /opt/hosting/docker-compose.yml stop -t 2
 
 [Install]

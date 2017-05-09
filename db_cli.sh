@@ -1,1 +1,1 @@
-docker-compose exec db mysql -u root
+/usr/local/bin/docker-compose exec db mysql -u root

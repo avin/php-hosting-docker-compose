@@ -1,1 +1,1 @@
-docker-compose exec db /tmp/backup.sh
+/usr/local/bin/docker-compose exec db /tmp/backup.sh
