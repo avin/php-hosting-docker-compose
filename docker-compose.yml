@@ -38,6 +38,7 @@ services:
     # !!! be the same as nginx.root
     volumes:
       - ./content/site-files:/var/www/vhosts     
+      - ./content/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
     networks:
       - webserver-network
     
